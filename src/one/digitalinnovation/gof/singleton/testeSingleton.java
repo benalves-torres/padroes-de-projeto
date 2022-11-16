@@ -1,10 +1,12 @@
-package one.digitalinnovation.gof;
+package one.digitalinnovation.gof.singleton;
 
-import java.sql.SQLOutput;
+import one.digitalinnovation.gof.strategy.*;
 
 public class testeSingleton {
     public static class Main {
         public static void main(String[] args) {
+
+            // Singleton
             Singleton singleton = Singleton.getInstancia();
             System.out.println(singleton);
             singleton = Singleton.getInstancia();
@@ -19,6 +21,20 @@ public class testeSingleton {
             System.out.println(holder);
             holder = SingletonLazyHolder.getInstancia();
             System.out.println(holder);
+
+            // Strategy
+
+            Comportamento normal = new ComportamentoNormal();
+            Comportamento defensivo = new ComportamentoDefensivo();
+            Comportamento agressivo = new ComportamentoAgressivo();
+
+            Robo robo = new Robo();
+            robo.setComportamento(normal);
+            robo.mover();
+            robo.mover();
+            robo.setComportamento(agressivo);
+            robo.mover();
+            robo.mover();
         }
     }
 }
